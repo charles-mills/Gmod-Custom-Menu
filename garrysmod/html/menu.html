@@ -160,14 +160,15 @@
 
 <ul class="games_list popup">
 
+	<li class="notowned"><img src='img/notowned.png' width="16" height="16"> <span ng-Tranny="'game_not_owned'"></span></li>
+	<li class="notinstalled"><img src='img/notinstalled.png' width="16" height="16"> <span ng-Tranny="'game_not_installed'"></span></li>
+	<hr/>
 	<li ng-repeat="game in Games|orderBy:'title'" class="{{IfElse( !game.owned, 'notowned', '' )}} {{IfElse( !game.installed, 'notinstalled', '' )}}">
-
 		<input type=checkbox ng-model="game.mounted" ng-show="game.installed" ng-change="GameMountChanged( game )"/>
-		<img src='img/notowned.png' ng-show="!game.owned" width=16 height=16>
-		<img src='img/notinstalled.png' ng-show="game.owned && !game.installed" width=16 height=16>
-
-		<span>{{game.title}}</span>
-
+		<img src='img/notowned.png' ng-show="!game.owned" width="16" height="16">
+		<img src='img/notinstalled.png' ng-show="game.owned && !game.installed" width="16" height="16">
+		<img ng-src='../materials/games/16/{{game.folder}}.png' style="margin-left: 20px;">
+		<span style="margin-left: 16px;">{{game.title}}</span>
 	</li>
 
 </ul>
@@ -212,12 +213,11 @@
 	</li>
 
 </ul>
+<div id="srv-banner" class="srv-banner" style="opacity:0.8;">
+	<center>
+		<img id="srv-prev" src="https://gaerisson-softs.fr/logos/gmodmenu/banner.php" />
+	</center>
+</div>
 
-
-	<div id="srv-banner" class="srv-banner" style="opacity:0.8;">
-		<center>
-			<img id="srv-prev" src="https://gaerisson-softs.fr/logos/gmodmenu/banner.php" />
-		</center>
-	</div>
 </body>
 </html>
