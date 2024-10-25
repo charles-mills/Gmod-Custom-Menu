@@ -1,10 +1,27 @@
 	<div class="gcm-page" ng-controller="ControllerMain">
+		<!-- Add new top controls -->
+		<div class="gcm-top-controls">
+			<div class="gcm-control-icon" ng-click="ToggleGamemodes()">
+				<img ng-src='../gamemodes/{{Gamemode}}/icon24.png'>
+			</div>
+			<div class="gcm-control-icon" ng-click="ToggleLanguage()">
+				<img ng-src='../resource/localization/{{Language}}.png'>
+			</div>
+			<div class="gcm-control-icon" ng-click="ToggleGames()">
+				<img src='img/games.png'>
+			</div>
+			<div class="gcm-control-icon" ng-click="TogglePopup('.kinect_settings')" ng-show="kinect.available">
+				<img ng-src='img/kinect.png'>
+			</div>
+		</div>
+		
 		<div class="gcm-menu-container">
 			<div class="gcm-logo-container">
 				<img class="gcm-animgm" ng-src='../gamemodes/{{Gamemode}}/logo.png' />
 			</div>
 			
-			<!-- Primary Actions (Horizontal) -->
+			<!-- Inside gcm-menu-container -->
+			<div class="gcm-section-title">Main Actions</div>
 			<div class="gcm-primary-actions">
 				<div class="gcm-btn-primary" ng-show="InGame">
 					<img src="img/main/menu/back.png" />
@@ -22,7 +39,7 @@
 				</div>
 			</div>
 
-			<!-- Secondary Actions (Grid Layout) -->
+			<div class="gcm-section-title">Tools & Content</div>
 			<div class="gcm-secondary-actions">
 				<div class="gcm-btn-secondary">
 					<img src="img/puzzle.png" />
@@ -45,7 +62,7 @@
 				</div>
 			</div>
 
-			<!-- System Actions -->
+			<div class="gcm-section-title">System</div>
 			<div class="gcm-system-actions">
 				<div class="gcm-btn-system">
 					<img src="img/main/menu/settings.png" />
@@ -79,4 +96,18 @@
 			</div>
 		</div>
 
+		<!-- Keep the popup menus but update their positioning -->
+		<ul class="gamemode_list popup">
+			<li ng-repeat="gm in Gamemodes|filter:{menusystem:true}|orderBy:'name'" ng-click="SelectGamemode( gm )">
+				<img ng-src='../gamemodes/{{gm.name}}/icon24.png'><span>{{gm.title}}</span>
+			</li>
+		</ul>
+
+		<ul class="language_list popup">
+			<li ng-repeat="lang in Languages" ng-click="SelectLanguage( lang )">
+				<img ng-src='../resource/localization/{{lang}}.png'>
+			</li>
+		</ul>
+
+		<!-- ... other popups ... -->
 	</div>
