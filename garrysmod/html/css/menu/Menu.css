@@ -30,7 +30,10 @@ H1.menuheader {
 	border-width: 0px 0px 0px 2px;
 	margin: 0px 0px -1px 0px;
 	-webkit-transition: padding 0.50s, border-width 0.20s, background-color 0.50s;
-	/* -webkit-backdrop-filter: blur(2px); */
+	width: 120%;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
 }
 
 .btn-menu:hover{
@@ -50,8 +53,6 @@ H1.menuheader {
 	background-position-x: 2px;
 	background-position-y: 0px;
 	background-size: 27px;
-
-	/* -webkit-backdrop-filter: blur(2px); */
 }
 
 .btn-menu a{
@@ -62,9 +63,11 @@ H1.menuheader {
 	font-weight: bold !important;
 	color: #fff !important;
 	text-shadow: none !important;
-	bottom: 4px;
-	position: relative;
-	left: 3px;
+	/* Remove bottom and left positioning */
+	/* bottom: 4px; */
+	/* left: 3px; */
+	/* Add this to make the text take up remaining space */
+	flex-grow: 1;
 }
 
 .btn-menu2 h2{
@@ -82,8 +85,6 @@ H1.menuheader {
 	position: relative;
 	left: 3px;
 	-webkit-transition: padding 0.50s, border-width 0.20s, background-color 0.50s;
-
-	/* -webkit-backdrop-filter: blur(10px); */
 }
 
 .btn-menu2 img{
@@ -218,11 +219,7 @@ INPUT
 INPUT.searchbox
 {
 	float: right;
-	/* border:0; */
-	/* border-radius: 3px; */
 	height: 24px;
-	/* margin-right: 320px; */
-	/* margin-top: 6px; */
 	margin-top: 8px;
 	padding: 4px;
 	border: 1px solid #006eff;
@@ -388,8 +385,6 @@ DIV.disabled
 .whiterounded
 {
 	background-color: rgba(250, 250, 250, 0.35);
-	/* -webkit-backdrop-filter: blur(10px); */
-	/* border-radius: 4px; */
 }
 
 pagnation
@@ -506,7 +501,6 @@ loading
     transform: scale(1.2);
 }
 
-/* Adjust the media queries for responsiveness */
 @media (max-width: 800px) {
     .news {
         width: 400px;
@@ -539,5 +533,365 @@ loading
 
     .news_item div font {
         font-size: 12px;
+    }
+}
+
+.btn-menu img {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+:root {
+    --gcm-primary: #3498db;
+    --gcm-secondary: #2c3e50;
+    --gcm-accent: #e74c3c;
+    --gcm-dark: rgba(15, 15, 20, 0.85);
+    --gcm-glass: rgba(255, 255, 255, 0.1);
+    --gcm-glass-hover: rgba(255, 255, 255, 0.15);
+    --gcm-text: #ecf0f1;
+    --gcm-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.gcm-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+    position: relative; /* For absolute positioning of news */
+}
+
+.gcm-menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+    margin: auto;
+    background: var(--gcm-dark);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--gcm-shadow);
+}
+
+.gcm-logo-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.gcm-animgm {
+    max-width: 400px;
+    filter: drop-shadow(0 0 20px rgba(52, 152, 219, 0.3));
+    transition: filter 0.3s ease;
+}
+
+.gcm-animgm:hover {
+    filter: drop-shadow(0 0 25px rgba(52, 152, 219, 0.5));
+}
+
+/* Primary Actions */
+.gcm-primary-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.gcm-btn-primary {
+    flex: 1;
+    background: linear-gradient(135deg, var(--gcm-glass), rgba(52, 152, 219, 0.2));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.gcm-btn-primary:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, var(--gcm-glass-hover), rgba(52, 152, 219, 0.3));
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Secondary Actions */
+.gcm-secondary-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.gcm-btn-secondary {
+    background: var(--gcm-glass);
+    border-radius: 6px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.gcm-btn-secondary:hover {
+    background: var(--gcm-glass-hover);
+    transform: scale(1.02);
+}
+
+/* System Actions */
+.gcm-system-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.gcm-btn-system {
+    background: var(--gcm-glass);
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.gcm-btn-system:hover {
+    background: var(--gcm-glass-hover);
+    transform: translateX(3px);
+}
+
+/* Common Button Styles */
+.gcm-btn-primary, .gcm-btn-secondary, .gcm-btn-system {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.gcm-btn-primary img, .gcm-btn-secondary img, .gcm-btn-system img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.gcm-btn-primary:hover img, .gcm-btn-secondary:hover img, .gcm-btn-system:hover img {
+    transform: scale(1.1);
+}
+
+.gcm-btn-primary a, .gcm-btn-secondary a, .gcm-btn-system a {
+    color: var(--gcm-text);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* News Section */
+.gcm-news-container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 400px;
+    background: var(--gcm-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--gcm-shadow);
+    backdrop-filter: blur(10px);
+}
+
+.gcm-news-item {
+    position: relative;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.gcm-news-item:hover {
+    transform: scale(1.02);
+}
+
+.gcm-news-item div {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.gcm-news-item:hover div {
+    transform: translateY(-5px);
+}
+
+/* Add any remaining styles you want to keep */
+
+/* Update media queries for better responsive layout */
+@media (max-width: 1200px) {
+    .gcm-page {
+        padding: 1rem;
+    }
+    
+    .gcm-news-container {
+        width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gcm-page {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .gcm-menu-container {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .gcm-news-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+    }
+}
+
+/* Update button transitions for better performance */
+.gcm-btn-primary, .gcm-btn-secondary, .gcm-btn-system {
+    /* Keep existing styles */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transition: transform 0.15s ease-out, 
+                background-color 0.15s ease-out,
+                box-shadow 0.15s ease-out;
+}
+
+/* Add subtle glow effects */
+.gcm-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at var(--x, 50%) var(--y, 50%),
+        rgba(255,255,255,0.1) 0%,
+        rgba(255,255,255,0) 50%
+    );
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
+}
+
+.gcm-btn-primary:hover::before {
+    opacity: 1;
+}
+
+/* Improve menu container styling */
+.gcm-menu-container {
+    /* Keep existing styles */
+    background: linear-gradient(
+        135deg,
+        var(--gcm-dark) 0%,
+        rgba(44, 62, 80, 0.95) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Add subtle animation to logo */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.gcm-logo-container img {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Improve button focus states */
+.gcm-btn-primary:focus,
+.gcm-btn-secondary:focus,
+.gcm-btn-system:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--gcm-primary);
+}
+
+/* Add hover state transitions */
+.gcm-btn-primary:hover {
+    transform: translateY(-3px) translateZ(0);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.gcm-btn-secondary:hover {
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.gcm-btn-system:hover {
+    transform: translateX(2px) translateZ(0);
+}
+
+/* Improve text readability */
+.gcm-btn-primary a,
+.gcm-btn-secondary a,
+.gcm-btn-system a {
+    /* Keep existing styles */
+    letter-spacing: 0.5px;
+}
+
+/* News Section - Update width and positioning */
+.news-container {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 512px; /* Increased from 400px */
+    background: var(--gcm-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--gcm-shadow);
+    backdrop-filter: blur(10px);
+}
+
+.news_item {
+    background-size: cover;
+    background-position: center;
+    height: 256px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Update media queries for news container */
+@media (max-width: 1400px) {
+    .news-container {
+        width: 450px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .news-container {
+        width: 400px;
+    }
+    
+    .news_item {
+        height: 225px;
+    }
+}
+
+@media (max-width: 992px) {
+    .news-container {
+        width: 350px;
+    }
+    
+    .news_item {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        max-width: 512px;
+        margin: 2rem auto 0;
     }
 }
