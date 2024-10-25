@@ -1,3 +1,7 @@
+This is an overhaul of the Gmod Custom Menu project by Gaerisson. It provides fixes for the current version of the game.
+
+Original README:
+
 ![logo](https://i.imgur.com/B4chuit.png)
 
 ![logo](https://i.imgur.com/zdtbjzt.png)
